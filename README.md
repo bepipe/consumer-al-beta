@@ -1,31 +1,5 @@
-## 🦙🌲🤏 Alpaca-LoRA: Low-Rank LLaMA Instruct-Tuning
+FORK BETA Testing
 
-- 🤗 **Try the pretrained model out [here](https://huggingface.co/spaces/tloen/alpaca-lora), courtesy of a GPU grant from Huggingface!**
-- Share custom LoRA adapters, including adapters for the larger models, [here](https://github.com/tloen/alpaca-lora/issues/52)
-- Users have created a Discord server for discussion and support [here](https://discord.gg/prbq284xX5)
-- `alpaca-lora-30b` can be used like ChatGPT; see [here](https://twitter.com/algo_diver/status/1637851640027041798)
-
-This repository contains code for reproducing the [Stanford Alpaca](https://github.com/tatsu-lab/stanford_alpaca) results using [low-rank adaptation (LoRA)](https://arxiv.org/pdf/2106.09685.pdf).
-We provide an Instruct model of similar quality to `text-davinci-003` that can run [on a Raspberry Pi](https://twitter.com/miolini/status/1634982361757790209) (for research),
-and the code is easily extended to the `13b`, `30b`, and `65b` models.
-
-In addition to the training code, which runs within five hours on a single RTX 4090,
-we publish a script for downloading and inference on the foundation model and LoRA,
-as well as the resulting [LoRA weights themselves](https://huggingface.co/tloen/alpaca-lora-7b/tree/main).
-To fine-tune cheaply and efficiently, we use Hugging Face's [PEFT](https://github.com/huggingface/peft)
-as well as Tim Dettmers' [bitsandbytes](https://github.com/TimDettmers/bitsandbytes).
-
-Without hyperparameter tuning, the LoRA model produces outputs comparable to the Stanford Alpaca model. (Please see the outputs included below.) Further tuning might be able to achieve better performance; I invite interested users to give it a try and report their results.
-
-### Setup
-
-1. Install dependencies
-
-```
-pip install -r requirements.txt
-```
-
-2. If bitsandbytes doesn't work, [install it from source.](https://github.com/TimDettmers/bitsandbytes/blob/main/compile_from_source.md) Windows users can follow [these instructions](https://github.com/tloen/alpaca-lora/issues/17).
 
 ### Inference (`generate.py`)
 
@@ -46,21 +20,6 @@ They should help users
 who want to run inference in projects like [llama.cpp](https://github.com/ggerganov/llama.cpp)
 or [alpaca.cpp](https://github.com/antimatter15/alpaca.cpp).
 
-### Dataset
-
-In addition to `alpaca_data.json`, which contains the original Stanford Alpaca dataset,
-we also include `alpaca_data_cleaned.json`, which has been [stripped of various tokenization artifacts](https://github.com/tloen/alpaca-lora/pull/32)
-with the help of @gururise.
-This file is now used by default in the training script.
-
-@AndriyMulyar has also provided interactive, embedding-based visualizations of the original dataset's [instructions](https://atlas.nomic.ai/map/alpaca_instructions)
-and [outputs](https://atlas.nomic.ai/map/alpaca_outputs),
-as well as [clusters of bad examples](https://atlas.nomic.ai/map/d2139cc3-bc1c-441c-8d6f-3e6ffbbc2eda/838019ff-8fe2-42ba-809a-d86d2b98cd50/-18.11668742841587/-11.348087116836096/-20.88850316347706/-17.680468640801223/774455612).
-
-### Notes
-
-- We can likely improve our model performance significantly if we had a better dataset. Consider supporting the [LAION Open Assistant](https://open-assistant.io/) effort to produce a high-quality dataset for supervised fine-tuning (or bugging them to release their data).
-- We're continually fixing bugs and conducting training runs, and the weights on the Hugging Face Hub are being updated accordingly. In particular, those facing issues with response lengths should make sure that they have the latest version of the weights and code.
 
 ### Example outputs
 
