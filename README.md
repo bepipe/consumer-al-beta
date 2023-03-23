@@ -17,8 +17,7 @@ PRs adapting this code to support larger models are always welcome.
 These files contain scripts that merge the LoRA weights back into the base model
 for export to Hugging Face format and to PyTorch `state_dicts`.
 They should help users
-who want to run inference in projects like [llama.cpp](https://github.com/ggerganov/llama.cpp)
-or [alpaca.cpp](https://github.com/antimatter15/alpaca.cpp).
+who want to run inference in projects like llama.cpp or alpaca.cpp.
 
 
 ### Example outputs
